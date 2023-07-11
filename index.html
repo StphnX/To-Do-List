@@ -6,21 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List App Test</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/82154cec2e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class='container'>
+        <section id="hero">
+            <h2 id="time"></h2>
+            <h1 id="greeting"></h1>
+            <input type="text" id="name-input" placeholder="What's your name?">
+        </section>
         <div class='todo-app'>
-            <h2>To-Do List <img src="images/icon.png"></h2>
+            <h2>What are your main tasks for today? </h2>
             <div class="row">
                 <input type="text" id="input-box" placeholder="Add your text">
                 <button onclick="addTask()">Add</button>
             </div>
             <ul id="list-container">
                 <!-- <li class="checked">Task1</li>
-            <li>Task2</li>
-            <li>Task3</li> -->
+                <li>Task2</li>
+                <li>Task3</li> -->
             </ul>
+
+        </div>
+        <div id="quote-container">
+            <p id="quote-text"></p>
         </div>
     </div>
     <script src="script.js"></script>

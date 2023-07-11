@@ -1,31 +1,74 @@
-*{
+#time, #greeting {
+    background-color: transparent;
+}
+
+#time{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    font-size: 150px;
+}
+#greeting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    font-size: 36px;
+  }
+  
+  #name-input {
+    font-size: 30px;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+    margin-top: calc(50% - 50%);
+  }
+  
+  #name-input::placeholder {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;  
+  }
+ *{
     margin:0;
     padding:0%;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
     box-sizing:border-box;
 }
 
 .container{
     width: 100%;
     min-height:100vh;
-    background:linear-gradient(135deg, #153677, #4e085f);
+    background:linear-gradient(135deg, #002a53, #722c00, #0a4d00);
     padding: 10px;
 }
+
 
 .todo-app{
     width: 100%;
     max-width: 540px;
-    background: #fff;
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
-
-
+    padding: 1rem;
+    box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
+    color: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    background-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.135);
 }
+
 .todo-app h2{
-    color: #4e085f;
+    color: #ffffff;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
@@ -43,7 +86,6 @@
     margin-bottom: 25px;
     position: relative;
     transition: all 0.3s ease;
-
 }
 
 input{
@@ -64,7 +106,7 @@ button {
     cursor: pointer;
     padding: 10px 50px;
     font-size: 16px;
-    color: #4e085f;
+    color: #393939;
     border-radius: 40px;
     margin-left: 10px;
     transition: all 0.3s ease;
@@ -83,7 +125,7 @@ ul li{
     user-select: none;
     cursor: pointer;
     position: relative;
-
+    color: #fff;
 }
 
 ul li::before{
@@ -109,25 +151,17 @@ ul li.checked::before{
     background-image: url(images/checked.png);
 
 }
+/* X button made in CSS not found in HTML but linked */
 
-ul li span{
-    position: absolute;
-    right: 0px;
-    top: 5px;
-    width: 40px;
-    height: 40px;
-    color: #ff5945;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    line-height: 40px;
-    text-align: center;
 
-}
+/* Quote feature with white font and centered with padding, in quotation marks and cool animation
+    text. */
+p {
+        padding: 50px;
+        color: #fff;
+        text-align: center;
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+    }
 
-ul li span:hover{
-    background: #edeef0;
-    border-radius: 100%;
-
-}
-
+    
