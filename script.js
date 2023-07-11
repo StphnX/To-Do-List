@@ -39,3 +39,4 @@ localStorage.setItem("data", listContainer.innerHTML);
 //load data from local storage on page load
 window.onload=function() {
     listContainer.innerHTML = localStorage.getItem("data");
+}
