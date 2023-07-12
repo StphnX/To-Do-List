@@ -31,9 +31,11 @@ function addTask() {
   } else {
     const li = document.createElement("li");
     li.textContent = inputBox.value;
-    const spanTrash = document.createElement("span");
+    const spanTrash = document.createElement("spanTrash");
+    spanTrash.id = "trash";
     spanTrash.className = "fa fa-trash";
-    const spanEdit = document.createElement("span");
+    const spanEdit = document.createElement("spanEdit");
+    spanEdit.id = "edit";
     spanEdit.className = "fa fa-edit";
     li.appendChild(spanTrash);
     li.appendChild(spanEdit);
@@ -41,6 +43,8 @@ function addTask() {
   }
   inputBox.value = "";
 }
+
+
 
 // Add task on enter key press
 listContainer.addEventListener("click", function (e) {
@@ -55,14 +59,16 @@ listContainer.addEventListener("click", function (e) {
 });
 
 
+spanTrash.className = "fa fa-trash";
+spanEdit.className = "fa fa-edit";
 //save data to local storage with JSON stringify
 
-function saveData(){
-localStorage.setItem("data", listContainer.innerHTML);
+function saveData() {
+  localStorage.setItem("data", listContainer.innerHTML);
 }
 //load data from local storage on page load
-window.onload=function() {
-    listContainer.innerHTML = localStorage.getItem("data");
+window.onload = function () {
+  listContainer.innerHTML = localStorage.getItem("data");
 }
 
 
@@ -91,12 +97,12 @@ function getTimeGreeting(name) {
 
 function updateGreeting() {
   const { time, greeting } = getTimeGreeting(nameInput.value);
-  
+
   timeElement.textContent = time;
   greetingElement.textContent = greeting;
 }
 
-nameInput.addEventListener('keydown', function(event) {
+nameInput.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
     nameInput.style.display = 'none';
     updateGreeting();
@@ -109,21 +115,21 @@ setInterval(updateGreeting, 60000);
 
 
 const quotes = [
-    'Believe you can and you\'re halfway there.',
-    'The future belongs to those who believe in the beauty of their dreams.',
-    'Don\'t watch the clock; do what it does. Keep going.',
-    'The only limit to our realization of tomorrow will be our doubts of today.',
-    'Success is not final, failure is not fatal: It is the courage to continue that counts.'
-  ];
+  'Believe you can and you\'re halfway there.',
+  'The future belongs to those who believe in the beauty of their dreams.',
+  'Don\'t watch the clock; do what it does. Keep going.',
+  'The only limit to our realization of tomorrow will be our doubts of today.',
+  'Success is not final, failure is not fatal: It is the courage to continue that counts.'
+];
 
-  function getRandomQuote() {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    return quotes[randomIndex];
-  }
+function getRandomQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
+}
 
-  function updateQuote() {
-    const quoteText = document.getElementById('quote-text');
-    quoteText.textContent = getRandomQuote();
-  }
+function updateQuote() {
+  const quoteText = document.getElementById('quote-text');
+  quoteText.textContent = getRandomQuote();
+}
 
-  setInterval(updateQuote, 5000);
+setInterval(updateQuote, 5000);

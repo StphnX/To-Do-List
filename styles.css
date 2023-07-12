@@ -1,8 +1,9 @@
-#time, #greeting {
+#time,
+#greeting {
     background-color: transparent;
 }
 
-#time{
+#time {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,6 +12,7 @@
     color: #ffffff;
     font-size: 150px;
 }
+
 #greeting {
     display: flex;
     flex-direction: column;
@@ -19,40 +21,41 @@
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
     font-size: 36px;
-  }
-  
-  #name-input {
+}
+
+#name-input {
     font-size: 30px;
     text-align: center;
     line-height: 30px;
     height: 30px;
     margin-top: calc(50% - 50%);
-  }
-  
-  #name-input::placeholder {
+}
+
+#name-input::placeholder {
     color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    justify-self: center;  
-  }
- *{
-    margin:0;
-    padding:0%;
-    font-family: 'Roboto', sans-serif;
-    box-sizing:border-box;
+    justify-self: center;
 }
 
-.container{
+* {
+    margin: 0;
+    padding: 0%;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
     width: 100%;
-    min-height:100vh;
-    background:linear-gradient(135deg, #002a53, #722c00, #0a4d00);
+    min-height: 100vh;
+    background: linear-gradient(135deg, #002a53, #722c00, #0a4d00);
     padding: 10px;
 }
 
 
-.todo-app{
+.todo-app {
     width: 100%;
     max-width: 540px;
     margin: 100px auto 20px;
@@ -64,19 +67,21 @@
     color: rgb(255, 255, 255);
     backdrop-filter: blur(10px);
     background-blend-mode: overlay;
-    background-color: rgba(255, 255, 255, 0.135);
+    background-color: rgba(255, 255, 255, 0.397);
 }
 
-.todo-app h2{
+.todo-app h2 {
     color: #ffffff;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
     font-size: 30px;
     font-weight: 500;
-    
+
 }
-.row{
+
+.row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -88,12 +93,12 @@
     transition: all 0.3s ease;
 }
 
-input{
+input {
     flex: 1;
     border: none;
     outline: none;
     background: transparent;
-    padding: 10px;  
+    padding: 10px;
     font-size: 16px;
     transition: all 0.3s ease;
 
@@ -113,13 +118,13 @@ button {
 
 }
 
-button:hover{
+button:hover {
     background: #ff5945;
     color: #fff;
 }
 
-ul li{
-    list-style:none;
+ul li {
+    list-style: none;
     font-size: 17px;
     padding: 12px 8px 12px 50px;
     user-select: none;
@@ -128,8 +133,8 @@ ul li{
     color: #fff;
 }
 
-ul li::before{
-    content:'';
+ul li::before {
+    content: '';
     position: absolute;
     height: 28px;
     width: 28px;
@@ -140,28 +145,39 @@ ul li::before{
     top: 12px;
     left: 8px;
 
-}   
-ul li.checked{
-    color:#555;
+}
+
+ul li.checked {
+    color: #555;
     text-decoration: line-through;
 
 
 }
-ul li.checked::before{
+
+ul li.checked::before {
     background-image: url(images/checked.png);
 
 }
+
 /* X button made in CSS not found in HTML but linked */
 
 
 /* Quote feature with white font and centered with padding, in quotation marks and cool animation
     text. */
 p {
-        padding: 50px;
-        color: #fff;
-        text-align: center;
-        font-size: 20px;
-        font-family: 'Roboto', sans-serif;
-    }
+    padding: 50px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
 
-    
+#trash {
+    position: absolute;
+    right: 15px;
+}
+
+#edit {
+    position: absolute;
+    right: 40px;
+}
