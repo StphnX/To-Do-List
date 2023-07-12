@@ -4,8 +4,10 @@ const listContainer = document.getElementById("list-container");
 // Function to modify a task
 function taskModify(event) {
   const clickedEle = event.target;
-  console.log(clickedEle);
-  // check if the delete button was clicked
+  const id = event.target.parentElement.id;
+  // console.log(id);
+  // console.log(clickedEle);
+  // Check if the delete button was clicked
   if (clickedEle.classList.contains("fa-trash")) {
     const task = clickedEle.parentElement;
     task.remove();
@@ -20,6 +22,15 @@ function taskModify(event) {
     editInput.focus();
     editInput.addEventListener("blur", function () {
       task.textContent = editInput.value;
+      // const spanTrash = document.createElement("spanTrash");
+      // // WHY DONT WE PUT THIS IN THE CLASSES
+      // spanTrash.id = "trash";
+      // spanTrash.className = "fa fa-trash";
+      // const spanEdit = document.createElement("spanEdit");
+      // spanEdit.id = "edit";
+      // spanEdit.className = "fa fa-edit";
+      // task.appendChild(editInput);
+      // task.appendChild(spanTrash);
     });
   }
 }
@@ -29,9 +40,14 @@ function addTask() {
   if (inputBox.value === "") {
     alert("You must write something!");
   } else {
+    // LOCALSTORAGE LOGIC
+    let uniqueId = "todo_"+new Date().valueOf()
+
     const li = document.createElement("li");
+    li.setAttribute('id', uniqueId)
     li.textContent = inputBox.value;
     const spanTrash = document.createElement("spanTrash");
+    // WHY DONT WE PUT THIS IN THE CLASSES
     spanTrash.id = "trash";
     spanTrash.className = "fa fa-trash";
     const spanEdit = document.createElement("spanEdit");
@@ -40,8 +56,28 @@ function addTask() {
     li.appendChild(spanTrash);
     li.appendChild(spanEdit);
     listContainer.appendChild(li);
+
+
+    saveData(uniqueId, inputBox.value, false)
   }
   inputBox.value = "";
+}
+
+// Add task on button click
+function loadAllTask(id, content, done) {
+
+  const li = document.createElement("li");
+  li.setAttribute('id', id)
+  li.textContent = content;
+  const spanTrash = document.createElement("spanTrash");
+  spanTrash.id = "trash";
+  spanTrash.className = "fa fa-trash";
+  const spanEdit = document.createElement("spanEdit");
+  spanEdit.id = "edit";
+  spanEdit.className = "fa fa-edit";
+  li.appendChild(spanTrash);
+  li.appendChild(spanEdit);
+  listContainer.appendChild(li);
 }
 
 
@@ -52,6 +88,7 @@ listContainer.addEventListener("click", function (e) {
     e.target.classList.toggle("checked");
   } else if (e.target.classList.contains("fa-trash")) {
     let li = e.target.parentElement;
+    localStorage.removeItem(li.id)
     listContainer.removeChild(li);
   } else if (e.target.classList.contains("fa-edit")) {
     taskModify(e);
@@ -59,16 +96,17 @@ listContainer.addEventListener("click", function (e) {
 });
 
 
-spanTrash.className = "fa fa-trash";
-spanEdit.className = "fa fa-edit";
-//save data to local storage with JSON stringify
+// spanTrash.className = "fa fa-trash";
+// spanEdit.className = "fa fa-edit";
 
-function saveData() {
-  localStorage.setItem("data", listContainer.innerHTML);
-}
-//load data from local storage on page load
-window.onload = function () {
-  listContainer.innerHTML = localStorage.getItem("data");
+//Save data to local storage with JSON stringify
+function saveData(id, content, done) {
+  let package = {
+    content: content,
+    done: false
+  }
+
+  localStorage.setItem(id, JSON.stringify(package));
 }
 
 
@@ -112,7 +150,7 @@ nameInput.addEventListener('keydown', function (event) {
 updateGreeting();
 setInterval(updateGreeting, 60000);
 
-
+// QUOTES
 
 const quotes = [
   'Believe you can and you\'re halfway there.',
@@ -124,12 +162,27 @@ const quotes = [
 
 function getRandomQuote() {
   const randomIndex = Math.floor(Math.random() * quotes.length);
+  console.log(quotes[randomIndex]);
   return quotes[randomIndex];
 }
 
 function updateQuote() {
   const quoteText = document.getElementById('quote-text');
-  quoteText.textContent = getRandomQuote();
+  console.log(quoteText);
+  quoteText.innerText = getRandomQuote();
 }
+updateQuote()
+setInterval(updateQuote, 50000);
 
-setInterval(updateQuote, 5000);
+// TODO UPDATE THE STATUS WHEN SOMETHING IS DONE IN LOCALSTORAGE
+
+// TODO EDITING ONE TAKS AND UPDATE THE LOCALSTORAGE
+
+//Load data from local storage on page load
+window.onload = ()=> {
+  for (let index = 0; index < localStorage.length; index++) {
+    const element = localStorage.key(index);
+    let task = JSON.parse(localStorage.getItem(element));
+    loadAllTask(element, task.content, task.done)
+  }
+}
