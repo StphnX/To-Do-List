@@ -5,8 +5,6 @@ const listContainer = document.getElementById("list-container");
 function taskModify(event) {
   const clickedEle = event.target;
   const id = event.target.parentElement.id;
-  // console.log(id);
-  // console.log(clickedEle);
   // Check if the delete button was clicked
   if (clickedEle.classList.contains("fa-trash")) {
     const task = clickedEle.parentElement;
@@ -22,15 +20,20 @@ function taskModify(event) {
     editInput.focus();
     editInput.addEventListener("blur", function () {
       task.textContent = editInput.value;
-      // const spanTrash = document.createElement("spanTrash");
-      // // WHY DONT WE PUT THIS IN THE CLASSES
-      // spanTrash.id = "trash";
-      // spanTrash.className = "fa fa-trash";
-      // const spanEdit = document.createElement("spanEdit");
-      // spanEdit.id = "edit";
-      // spanEdit.className = "fa fa-edit";
-      // task.appendChild(editInput);
-      // task.appendChild(spanTrash);
+      const spanTrash = document.createElement("spanTrash");
+      spanTrash.id = "trash";
+      spanTrash.className = "fa fa-trash";
+      task.appendChild(spanTrash);
+      const spanEdit = document.createElement("spanEdit");
+      spanEdit.id = "edit";
+      spanEdit.className = "fa fa-edit";
+      task.appendChild(spanEdit);
+      const localTask = JSON.parse(localStorage.getItem(id))
+      let payload = {
+        content:task.textContent,
+        done: localTask.done
+      }
+      localStorage.setItem(id, JSON.stringify(payload))
     });
   }
 }
@@ -65,8 +68,8 @@ function addTask() {
 
 // Add task on button click
 function loadAllTask(id, content, done) {
-
   const li = document.createElement("li");
+  done ? li.classList = "checked" : li.classList = ""
   li.setAttribute('id', id)
   li.textContent = content;
   const spanTrash = document.createElement("spanTrash");
@@ -81,14 +84,20 @@ function loadAllTask(id, content, done) {
 }
 
 
-
 // Add task on enter key press
 listContainer.addEventListener("click", function (e) {
   if (e.target.tagName === "LI") {
-    e.target.classList.toggle("checked");
-    // TODO UPDATE THE STATUS WHEN SOMETHING IS DONE IN LOCALSTORAGE
     let status = JSON.parse(localStorage.getItem(e.target.id))
-    console.log(status.done);
+    if(!status.done){
+      e.target.classList = "checked"
+      let payload = {content:status.content,done:true}
+      console.log(payload);
+      localStorage.setItem(e.target.id, JSON.stringify(payload))
+    }else{
+      e.target.classList = ""
+      let payload = {content:status.content,done:false}
+      localStorage.setItem(e.target.id, JSON.stringify(payload))
+    }
   } else if (e.target.classList.contains("fa-trash")) {
     let li = e.target.parentElement;
     localStorage.removeItem(li.id)
@@ -176,8 +185,6 @@ function updateQuote() {
 }
 updateQuote()
 setInterval(updateQuote, 50000);
-
-// TODO EDITING ONE TAKS AND UPDATE THE LOCALSTORAGE
 
 //Load data from local storage on page load
 window.onload = ()=> {
