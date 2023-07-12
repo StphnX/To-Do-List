@@ -86,6 +86,9 @@ function loadAllTask(id, content, done) {
 listContainer.addEventListener("click", function (e) {
   if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
+    // TODO UPDATE THE STATUS WHEN SOMETHING IS DONE IN LOCALSTORAGE
+    let status = JSON.parse(localStorage.getItem(e.target.id))
+    console.log(status.done);
   } else if (e.target.classList.contains("fa-trash")) {
     let li = e.target.parentElement;
     localStorage.removeItem(li.id)
@@ -173,8 +176,6 @@ function updateQuote() {
 }
 updateQuote()
 setInterval(updateQuote, 50000);
-
-// TODO UPDATE THE STATUS WHEN SOMETHING IS DONE IN LOCALSTORAGE
 
 // TODO EDITING ONE TAKS AND UPDATE THE LOCALSTORAGE
 
