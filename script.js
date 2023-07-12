@@ -11,6 +11,7 @@ function taskModify(event) {
     task.remove();
   } else if (clickedEle.classList.contains("fa-edit")) {
     const task = clickedEle.parentElement;
+
     const editInput = document.createElement("input");
     editInput.type = "text";
     editInput.className = "edit-input";
@@ -28,6 +29,7 @@ function taskModify(event) {
       spanEdit.id = "edit";
       spanEdit.className = "fa fa-edit";
       task.appendChild(spanEdit);
+      
       const localTask = JSON.parse(localStorage.getItem(id))
       let payload = {
         content:task.textContent,
@@ -43,14 +45,14 @@ function addTask() {
   if (inputBox.value === "") {
     alert("You must write something!");
   } else {
-    // LOCALSTORAGE LOGIC
+    // CREATES A UNIQUE ID FOR THE NEW TASK
     let uniqueId = "todo_"+new Date().valueOf()
 
+    // CREATES A NEW LI
     const li = document.createElement("li");
     li.setAttribute('id', uniqueId)
     li.textContent = inputBox.value;
     const spanTrash = document.createElement("spanTrash");
-    // WHY DONT WE PUT THIS IN THE CLASSES
     spanTrash.id = "trash";
     spanTrash.className = "fa fa-trash";
     const spanEdit = document.createElement("spanEdit");
@@ -59,8 +61,7 @@ function addTask() {
     li.appendChild(spanTrash);
     li.appendChild(spanEdit);
     listContainer.appendChild(li);
-
-
+    // SET LOCAL STORAGE
     saveData(uniqueId, inputBox.value, false)
   }
   inputBox.value = "";
@@ -107,17 +108,13 @@ listContainer.addEventListener("click", function (e) {
   }
 });
 
-
-// spanTrash.className = "fa fa-trash";
-// spanEdit.className = "fa fa-edit";
-
 //Save data to local storage with JSON stringify
 function saveData(id, content, done) {
   let package = {
     content: content,
-    done: false
+    done: done
   }
-
+  // SETS A NEW ITEM IN LOCAL STORAGE USING THE ID AS A KEY AND THE OBJECT CALLED PACKAGE AS THE VALUE
   localStorage.setItem(id, JSON.stringify(package));
 }
 
@@ -163,26 +160,25 @@ updateGreeting();
 setInterval(updateGreeting, 60000);
 
 // QUOTES
-
 const quotes = [
   'Believe you can and you\'re halfway there.',
   'The future belongs to those who believe in the beauty of their dreams.',
   'Don\'t watch the clock; do what it does. Keep going.',
   'The only limit to our realization of tomorrow will be our doubts of today.',
-  'Success is not final, failure is not fatal: It is the courage to continue that counts.'
+  'Success is not final, failure is not fatal: It is the courage to continue that counts.',
+  'Let\'s get to work'
 ];
 
 function getRandomQuote() {
   const randomIndex = Math.floor(Math.random() * quotes.length);
-  console.log(quotes[randomIndex]);
   return quotes[randomIndex];
 }
 
 function updateQuote() {
   const quoteText = document.getElementById('quote-text');
-  console.log(quoteText);
   quoteText.innerText = getRandomQuote();
 }
+
 updateQuote()
 setInterval(updateQuote, 50000);
 
