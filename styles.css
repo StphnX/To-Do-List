@@ -69,21 +69,20 @@
     padding: 10px;
 }
 
-
-.todo-app {
-    width: 100%;
-    max-width: 540px;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    padding: 1rem;
-    box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
-    color: rgb(255, 255, 255);
-    backdrop-filter: blur(10px);
-    background-blend-mode: overlay;
-    background-color: rgba(255, 255, 255, 0.397);
-}
+    .todo-app {
+        width: 100%;
+        max-width: 540px;
+        margin: 100px auto 20px;
+        padding: 40px 30px 70px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        padding: 1rem;
+        box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
+        color: rgb(255, 255, 255);
+        backdrop-filter: blur(10px);
+        background-blend-mode: overlay;
+        background-color: rgba(255, 255, 255, 0.397);
+    }
 
 .todo-app h2 {
     color: #ffffff;
@@ -96,47 +95,52 @@
 
 }
 
-.row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #edeeef;
-    border-radius: 30px;
-    padding-left: 20px;
-    margin-bottom: 25px;
-    position: relative;
-    transition: all 0.3s ease;
-}
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #edeeef;
+        border-radius: 30px;
+        padding-left: 20px;
+        margin-bottom: 25px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
 
-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding: 10px;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    input {
+        flex: 1;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 10px;
+        font-size: 16px;
+        transition: all 0.3s ease;
 
-}
+    }
+    #input-box:hover,
+    #input-box:hover ~ button {
+      border: 1px solid rgba(255, 255, 255, 0.677);
+      border-radius: 20px;
+      padding: 10px 50px;
+    }
+    button {
+        border: none;
+        outline: none;
+        background: #009605;
+        cursor: pointer;
+        padding: 10px 50px;
+        font-size: 16px;
+        color: #000000;
+        border-radius: 40px;
+        margin-left: 10px;
+        transition: all 0.3s ease;
+        font-weight:normal;
+    }
 
-button {
-    border: none;
-    outline: none;
-    background: #ff5945;
-    cursor: pointer;
-    padding: 10px 50px;
-    font-size: 16px;
-    color: #393939;
-    border-radius: 40px;
-    margin-left: 10px;
-    transition: all 0.3s ease;
-
-}
-
-button:hover {
-    background: #ff5945;
-    color: hwb(0 100% 0%);
-}
+    button:hover {
+        background: #009605;
+        color: #fff;
+    }
 
 ul li {
     list-style: none;
@@ -213,22 +217,22 @@ p {
     right: 15px;
 }
 
-#edit {
-    position: absolute;
-    right: 40px;
-}
-
-
-
-
-/* Styles for screens smaller than 600px */
-@media (max-width: 600px) {
-    .todo-app {
-        max-width: 100%;
-        /* Adjust the width as needed */
-        margin: 50px auto;
-        /* Adjust the margin as needed */
+    #edit {
+        position: absolute;
+        right: 40px;
     }
+
+
+
+
+    /* Styles for screens smaller than 600px */
+    @media (max-width: 600px) {
+        .todo-app {
+            max-width: 100%;
+            /* Adjust the width as needed */
+            margin: 50px auto;
+            /* Adjust the margin as needed */
+        }
 
     .row {
         flex-direction: column;
@@ -249,8 +253,29 @@ p {
         padding: 8px;
     }
 
-    p {
-        padding: 20px;
-        font-size: 16px;
+        p {
+            padding: 20px;
+            font-size: 16px;
+        }
     }
-}
+    @media (max-width: 768px) {
+        /* Adjust the font size of time and greeting elements */
+        #time {
+          font-size: 9rem;
+        }
+      
+        #greeting {
+          font-size: 2rem;
+        }
+      
+      @media (max-width: 480px) {
+        /* Adjust the font size of time and greeting elements */
+        #time {
+          font-size: 6rem;
+        }
+      
+        #greeting {
+          font-size: 2rem;
+        }
+      }}
+      
