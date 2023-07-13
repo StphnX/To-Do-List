@@ -185,7 +185,7 @@ const quotes = [
   "There is no greater agony than bearing an untold story inside you. ― Maya Angelou",
   "“You are constantly invited to be what you are. ― Ralph Waldo Emerson",
   "What you seek, is seeking you. - Rumi",
-  'Let\'s get to work'
+  'Let\'s get to work. - Eca'
 ];
 
 function getRandomQuote() {

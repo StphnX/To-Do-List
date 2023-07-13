@@ -3,6 +3,15 @@
     background-color: transparent;
 }
 
+/* Set the font family and color for time, greeting, input, and paragraph elements */
+#time,
+#greeting,
+input,
+p {
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+}
+
 #time {
     display: flex;
     flex-direction: column;
@@ -25,11 +34,12 @@
 
 #name-input {
     font-size: 30px;
-
-    text-align: center;
-    line-height: 30px;
-    height: 30px;
-    margin-top: calc(50% - 50%);
+    font-size: 1.875rem;
+    width: max-content;
+    display: block;
+    margin: 0 auto; /* Add this line */
+    position: static;
+    width: max-content;
 }
 
 #name-input::placeholder {
@@ -115,7 +125,7 @@
         padding: 10px;
         font-size: 16px;
         transition: all 0.3s ease;
-
+        color: #2c2c2c;
     }
     #input-box:hover,
     #input-box:hover ~ button {
@@ -134,7 +144,6 @@
         border-radius: 40px;
         margin-left: 10px;
         transition: all 0.3s ease;
-        font-weight:normal;
     }
 
     button:hover {
@@ -222,46 +231,31 @@ p {
         right: 40px;
     }
 
-
-
-
-    /* Styles for screens smaller than 600px */
-    @media (max-width: 600px) {
-        .todo-app {
-            max-width: 100%;
-            /* Adjust the width as needed */
-            margin: 50px auto;
-            /* Adjust the margin as needed */
-        }
-
-    .row {
-        flex-direction: column;
-        align-items: stretch;
+/* Responsive styles */
+@media (min-width: 1024px) {
+    /* Adjust the font size of time and greeting elements */
+    #time {
+      font-size: 9rem;
     }
-
-    input {
-        margin-top: 0%;
-
+  
+    #greeting {
+      font-size: 2.5rem;
     }
+  }
 
-    button {
-        margin-left: 0;
-        margin-top: 10px;
+  @media (max-width: 768px) {
+    /* Adjust the font size of time and greeting elements */
+    #time {
+      font-size: 6rem;
     }
-
-    ul li {
-        padding: 8px;
-    }
-
-        p {
-            padding: 20px;
-            font-size: 16px;
-        }
+  
+    #greeting {
+      font-size: 2rem;
     }
     @media (max-width: 768px) {
         /* Adjust the font size of time and greeting elements */
         #time {
-          font-size: 9rem;
+          font-size: 6rem;
         }
       
         #greeting {
@@ -278,4 +272,4 @@ p {
           font-size: 2rem;
         }
       }}
-      
+    }
