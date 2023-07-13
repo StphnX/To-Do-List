@@ -1,6 +1,13 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
+// Add task on Enter key press
+inputBox.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    addTask();
+  }
+});
+
 // Function to modify a task
 function taskModify(event) {
   const clickedEle = event.target;
@@ -40,7 +47,7 @@ function taskModify(event) {
   }
 }
 
-// Add task on button click
+// Add task on button click and Enter press
 function addTask() {
   if (inputBox.value === "") {
     alert("You must write something!");
@@ -66,6 +73,8 @@ function addTask() {
   }
   inputBox.value = "";
 }
+
+
 
 // Add task on button click
 function loadAllTask(id, content, done) {
@@ -156,16 +165,28 @@ nameInput.addEventListener('keydown', function (event) {
   }
 });
 
+nameInput.addEventListener('blur', function (event) {
+  nameInput.style.display = 'none';
+  updateGreeting();
+});
+
+
 updateGreeting();
 setInterval(updateGreeting, 60000);
 
 // QUOTES
-const quotes = [
+const quotes = [ 
   'Believe you can and you\'re halfway there.',
   'The future belongs to those who believe in the beauty of their dreams.',
-  'Don\'t watch the clock; do what it does. Keep going.',
-  'The only limit to our realization of tomorrow will be our doubts of today.',
-  'Success is not final, failure is not fatal: It is the courage to continue that counts.',
+  "I didn't fail the test. I just found 100 ways to do it wrong - Benjamin Franklin",
+  "If you're going through hell, keep going - Winston Churchill",
+  "You must learn from the mistakes of others. You can't possibly live long enough to make them all yourself.",
+  "If anyone here believes in telekinesis, raise my hand - Kurt Vonnegut",
+  "I do things like get in a taxi and say,'The library, and step on it.' - David Foster",
+  "Just because you're paranoid doesn't mean they aren't after you. Joseph Heller",
+  "There is no greater agony than bearing an untold story inside you. ― Maya Angelou",
+  "“You are constantly invited to be what you are. ― Ralph Waldo Emerson",
+  "What you seek, is seeking you. - Rumi",
   'Let\'s get to work'
 ];
 
