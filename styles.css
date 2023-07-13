@@ -23,7 +23,7 @@
     font-size: 36px;
 }
 
-  #name-input {
+#name-input {
     font-size: 30px;
 
     text-align: center;
@@ -42,18 +42,18 @@
 }
 
 
-    #name-input::placeholder {
-        color: #ffffff;
-    }
+#name-input::placeholder {
+    color: #ffffff;
+}
 
-    * {
+* {
 
-        padding: 0%;
-        font-family: 'Roboto', sans-serif;
-        box-sizing: border-box;
-        margin: 0%;
+    padding: 0%;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin: 0%;
 
-    }
+}
 
 * {
     margin: 0;
@@ -62,12 +62,12 @@
     box-sizing: border-box;
 }
 
-    .container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #002a53, #722c00, #0a4d00);
-        padding: 10px;
-    }
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #002a53, #722c00, #0a4d00);
+    padding: 10px;
+}
 
 
 .todo-app {
@@ -194,7 +194,7 @@ li:hover .trash-icon {
     display: inline;
 }
 
-    /* X button made in CSS not found in HTML but linked */
+/* X button made in CSS not found in HTML but linked */
 
 
 /* Quote feature with white font and centered with padding, in quotation marks and cool animation

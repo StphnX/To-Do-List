@@ -21,15 +21,21 @@ function taskModify(event) {
     editInput.focus();
     editInput.addEventListener("blur", function () {
       task.textContent = editInput.value;
-      // const spanTrash = document.createElement("spanTrash");
-      // // WHY DONT WE PUT THIS IN THE CLASSES
-      // spanTrash.id = "trash";
-      // spanTrash.className = "fa fa-trash";
-      // const spanEdit = document.createElement("spanEdit");
-      // spanEdit.id = "edit";
-      // spanEdit.className = "fa fa-edit";
-      // task.appendChild(editInput);
-      // task.appendChild(spanTrash);
+      const spanTrash = document.createElement("spanTrash");
+      spanTrash.id = "trash";
+      spanTrash.className = "fa fa-trash";
+      task.appendChild(spanTrash);
+      const spanEdit = document.createElement("spanEdit");
+      spanEdit.id = "edit";
+      spanEdit.className = "fa fa-edit";
+      task.appendChild(spanEdit);
+
+      const localTask = JSON.parse(localStorage.getItem(id))
+      let payload = {
+        content: task.textContent,
+        done: localTask.done
+      }
+      localStorage.setItem(id, JSON.stringify(payload))
     });
   }
 }
@@ -39,8 +45,8 @@ function addTask() {
   if (inputBox.value === "") {
     alert("You must write something!");
   } else {
-    // LOCALSTORAGE LOGIC
-    let uniqueId = "todo_"+new Date().valueOf()
+    // CREATES A UNIQUE ID FOR THE NEW TASK
+    let uniqueId = "todo_" + new Date().valueOf()
 
     // CREATES A NEW LI
     const li = document.createElement("li");
@@ -60,9 +66,6 @@ function addTask() {
   }
   inputBox.value = "";
 }
-
-//Add transition if li is created
-
 
 // Add task on button click
 function loadAllTask(id, content, done) {
@@ -86,7 +89,16 @@ function loadAllTask(id, content, done) {
 listContainer.addEventListener("click", function (e) {
   if (e.target.tagName === "LI") {
     let status = JSON.parse(localStorage.getItem(e.target.id))
-    console.log(status.done);
+    if (!status.done) {
+      e.target.classList = "checked"
+      let payload = { content: status.content, done: true }
+      console.log(payload);
+      localStorage.setItem(e.target.id, JSON.stringify(payload))
+    } else {
+      e.target.classList = ""
+      let payload = { content: status.content, done: false }
+      localStorage.setItem(e.target.id, JSON.stringify(payload))
+    }
   } else if (e.target.classList.contains("fa-trash")) {
     let li = e.target.parentElement;
     localStorage.removeItem(li.id)
