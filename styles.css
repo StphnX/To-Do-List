@@ -4,13 +4,7 @@
 }
 
 /* Set the font family and color for time, greeting, input, and paragraph elements */
-#time,
-#greeting,
-input,
-p {
-  font-family: "Roboto", sans-serif;
-  color: #ffffff;
-}
+
 
 #time {
     display: flex;
@@ -21,6 +15,7 @@ p {
     color: #ffffff;
     font-size: 150px;
 }
+
 
 #greeting {
     display: flex;
@@ -40,6 +35,7 @@ p {
     margin: 0 auto; /* Add this line */
     position: static;
     width: max-content;
+    color: white;
 }
 
 #name-input::placeholder {
@@ -49,20 +45,6 @@ p {
     justify-content: center;
     align-items: center;
     justify-self: center;
-}
-
-
-#name-input::placeholder {
-    color: #ffffff;
-}
-
-* {
-
-    padding: 0%;
-    font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
-    margin: 0%;
-
 }
 
 * {
@@ -78,21 +60,37 @@ p {
     background: linear-gradient(135deg, #002a53, #722c00, #0a4d00);
     padding: 10px;
 }
+.todo-app {
+    width: 100%;
+    max-width: 540px;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    padding: 1rem;
+    box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
+    color: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    background-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.109);
+}
 
-    .todo-app {
-        width: 100%;
-        max-width: 540px;
-        margin: 100px auto 20px;
-        padding: 40px 30px 70px;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        padding: 1rem;
-        box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
-        color: rgb(255, 255, 255);
-        backdrop-filter: blur(10px);
-        background-blend-mode: overlay;
-        background-color: rgba(255, 255, 255, 0.397);
-    }
+.todo-app::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    padding: 1px; /* control the border thickness */
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.767),
+      rgb(92, 92, 92)
+    );
+    -webkit-mask: linear-gradient(rgba(255, 255, 255, 0.789) 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
 
 .todo-app h2 {
     color: #ffffff;
@@ -125,7 +123,6 @@ p {
         padding: 10px;
         font-size: 16px;
         transition: all 0.3s ease;
-        color: #2c2c2c;
     }
     #input-box:hover,
     #input-box:hover ~ button {
