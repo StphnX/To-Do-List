@@ -3,6 +3,9 @@
     background-color: transparent;
 }
 
+/* Set the font family and color for time, greeting, input, and paragraph elements */
+
+
 #time {
     display: flex;
     flex-direction: column;
@@ -12,6 +15,7 @@
     color: #ffffff;
     font-size: 150px;
 }
+
 
 #greeting {
     display: flex;
@@ -23,57 +27,81 @@
     font-size: 36px;
 }
 
-  #name-input {
+#name-input {
     font-size: 30px;
+    font-size: 1.875rem;
+    width: max-content;
     display: block;
     margin: 0 auto; /* Add this line */
     position: static;
-    width:max-content;
-  }
-  
-  #name-input::placeholder {
+    width: max-content;
+    color: white;
+}
+
+#name-input::placeholder {
     color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+
+* {
+    margin: 0;
+    padding: 0%;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #002a53, #722c00, #0a4d00);
+    padding: 10px;
+}
+.todo-app {
+    width: 100%;
+    max-width: 540px;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    padding: 1rem;
+    box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
+    color: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    background-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.109);
+}
+
+.todo-app::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    padding: 1px; /* control the border thickness */
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.767),
+      rgb(92, 92, 92)
+    );
+    -webkit-mask: linear-gradient(rgba(255, 255, 255, 0.789) 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
   }
 
-    * {
-        margin: 0;
-        padding: 0%;
-        font-family: 'Roboto', sans-serif;
-        box-sizing: border-box;
-    }
+.todo-app h2 {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 500;
 
-    .container {
-        width: 100%;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #002a53, #722c00, #0a4d00);
-        padding: 10px;
-    }
-
-    .todo-app {
-        width: 100%;
-        max-width: 540px;
-        margin: 100px auto 20px;
-        padding: 40px 30px 70px;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        padding: 1rem;
-        box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
-        color: rgb(255, 255, 255);
-        backdrop-filter: blur(10px);
-        background-blend-mode: overlay;
-        background-color: rgba(255, 255, 255, 0.397);
-    }
-
-    .todo-app h2 {
-        color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
-        font-size: 20px;
-        font-weight: 500;
-
-    }
+}
 
     .row {
         display: flex;
@@ -95,129 +123,150 @@
         padding: 10px;
         font-size: 16px;
         transition: all 0.3s ease;
-
     }
-
+    #input-box:hover,
+    #input-box:hover ~ button {
+      border: 1px solid rgba(255, 255, 255, 0.677);
+      border-radius: 20px;
+      padding: 10px 50px;
+    }
     button {
         border: none;
         outline: none;
-        background: #ff5945;
+        background: #009605;
         cursor: pointer;
         padding: 10px 50px;
         font-size: 16px;
-        color: #393939;
+        color: #000000;
         border-radius: 40px;
         margin-left: 10px;
         transition: all 0.3s ease;
-
     }
 
     button:hover {
-        background: #ff5945;
+        background: #009605;
         color: #fff;
     }
 
-    ul li {
-        list-style: none;
-        font-size: 17px;
-        padding: 12px 8px 12px 50px;
-        user-select: none;
-        cursor: pointer;
-        position: relative;
-        color: #fff;
-    }
+ul li {
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    color: #fff;
+}
 
-    ul li::before {
-        content: '';
-        position: absolute;
-        height: 28px;
-        width: 28px;
-        border-radius: 50%;
-        background-image: url(images/unchecked.png);
-        background-size: cover;
-        background-position: center;
-        top: 12px;
-        left: 8px;
+li:hover {
+    background-color: rgba(110, 109, 104, 0.38);
+    border-radius: 20px;
+    margin-bottom: -6px;
+}
 
-    }
+li {
+    transition: all 0.3s ease-in;
+}
 
-    ul li.checked {
-        color: #555;
-        text-decoration: line-through;
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 8px;
+    left: 8px;
 
+}
 
-    }
-
-    ul li.checked::before {
-        background-image: url(images/checked.png);
-
-    }
-
-    .edit-icon, .trash-icon {
-        display: none;
-      }
-      
-      li:hover .edit-icon, li:hover .trash-icon {
-        display: inline;
-      }
-
-    /* X button made in CSS not found in HTML but linked */
+ul li.checked {
+    color: #555;
+    text-decoration: line-through;
 
 
-    /* Quote feature with white font and centered with padding, in quotation marks and cool animation
+}
+
+ul li.checked::before {
+    background-image: url(images/checked.png);
+
+}
+
+.edit-icon,
+.trash-icon {
+    display: none;
+}
+
+li:hover .edit-icon,
+li:hover .trash-icon {
+    display: inline;
+}
+
+/* X button made in CSS not found in HTML but linked */
+
+
+/* Quote feature with white font and centered with padding, in quotation marks and cool animation
     text. */
-    p {
+p {
 
-        padding: 50px;
-        color: #fff;
-        text-align: center;
-        font-size: 20px;
-        font-family: 'Roboto', sans-serif;
-    }
+    padding: 50px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
 
-    #trash {
-        position: absolute;
-        right: 15px;
-    }
+#trash {
+    position: absolute;
+    right: 15px;
+}
 
     #edit {
         position: absolute;
         right: 40px;
     }
 
+/* Responsive styles */
+@media (min-width: 1024px) {
+    /* Adjust the font size of time and greeting elements */
+    #time {
+      font-size: 9rem;
+    }
+  
+    #greeting {
+      font-size: 2.5rem;
+    }
+  }
 
-
-
-    /* Styles for screens smaller than 600px */
-    @media (max-width: 600px) {
-        .todo-app {
-            max-width: 100%;
-            /* Adjust the width as needed */
-            margin: 50px auto;
-            /* Adjust the margin as needed */
+  @media (max-width: 768px) {
+    /* Adjust the font size of time and greeting elements */
+    #time {
+      font-size: 6rem;
+    }
+  
+    #greeting {
+      font-size: 2rem;
+    }
+    @media (max-width: 768px) {
+        /* Adjust the font size of time and greeting elements */
+        #time {
+          font-size: 6rem;
         }
-
-        .row {
-            flex-direction: column;
-            align-items: stretch;
+      
+        #greeting {
+          font-size: 2rem;
         }
-
-        input {
-            margin-top: 0%;
-
+      
+      @media (max-width: 480px) {
+        /* Adjust the font size of time and greeting elements */
+        #time {
+          font-size: 6rem;
         }
-
-        button {
-            margin-left: 0;
-            margin-top: 10px;
+      
+        #greeting {
+          font-size: 2rem;
         }
-
-        ul li {
-            padding: 8px;
-        }
-
-        p {
-            padding: 20px;
-            font-size: 16px;
-        }
+      }}
     }
